@@ -8,20 +8,40 @@
 
 /* Begin PBXBuildFile section */
 		8C2F5BA71EA0DDCE00A68820 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F5BA61EA0DDCE00A68820 /* AppDelegate.swift */; };
-		8C2F5BA91EA0DDCE00A68820 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F5BA81EA0DDCE00A68820 /* ViewController.swift */; };
 		8C2F5BAC1EA0DDCE00A68820 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C2F5BAA1EA0DDCE00A68820 /* Main.storyboard */; };
 		8C2F5BAE1EA0DDCE00A68820 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C2F5BAD1EA0DDCE00A68820 /* Assets.xcassets */; };
 		8C2F5BB11EA0DDCE00A68820 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C2F5BAF1EA0DDCE00A68820 /* LaunchScreen.storyboard */; };
+		8C2F5BB91EA0DDFA00A68820 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F5BB81EA0DDFA00A68820 /* LoginViewController.swift */; };
+		8C2F5BBB1EA0DE3700A68820 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2F5BBA1EA0DE3700A68820 /* ChatViewController.swift */; };
+		8C2F5BE91EA0F4B700A68820 /* backgroundPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C2F5BE41EA0F4B700A68820 /* backgroundPhoto.png */; };
+		8C2F5BEA1EA0F4B700A68820 /* dummyUser.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C2F5BE51EA0F4B700A68820 /* dummyUser.png */; };
+		8C2F5BEB1EA0F4B700A68820 /* googleButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C2F5BE61EA0F4B700A68820 /* googleButton.png */; };
+		8C2F5BEC1EA0F4B700A68820 /* OrLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C2F5BE71EA0F4B700A68820 /* OrLine.png */; };
+		8C2F5BED1EA0F4B700A68820 /* profileImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C2F5BE81EA0F4B700A68820 /* profileImage.png */; };
+		8C4173601EA12C60004ECBF4 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C41735F1EA12C60004ECBF4 /* Helper.swift */; };
+		8C68761D1EA1145E009FB547 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C68761C1EA1145E009FB547 /* GoogleService-Info.plist */; };
+		F5BC3B0DEEBA3B5EF947FB98 /* Pods_GoChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 746F1F5E1CAEC6F697CDAA8B /* Pods_GoChat.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		66797A163279C1652251BF6F /* Pods-GoChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoChat/Pods-GoChat.release.xcconfig"; sourceTree = "<group>"; };
+		746F1F5E1CAEC6F697CDAA8B /* Pods_GoChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2F5BA31EA0DDCE00A68820 /* GoChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2F5BA61EA0DDCE00A68820 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8C2F5BA81EA0DDCE00A68820 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8C2F5BAB1EA0DDCE00A68820 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8C2F5BAD1EA0DDCE00A68820 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C2F5BB01EA0DDCE00A68820 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C2F5BB21EA0DDCE00A68820 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C2F5BB81EA0DDFA00A68820 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8C2F5BBA1EA0DE3700A68820 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		8C2F5BE41EA0F4B700A68820 /* backgroundPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundPhoto.png; sourceTree = "<group>"; };
+		8C2F5BE51EA0F4B700A68820 /* dummyUser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dummyUser.png; sourceTree = "<group>"; };
+		8C2F5BE61EA0F4B700A68820 /* googleButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = googleButton.png; sourceTree = "<group>"; };
+		8C2F5BE71EA0F4B700A68820 /* OrLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OrLine.png; sourceTree = "<group>"; };
+		8C2F5BE81EA0F4B700A68820 /* profileImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileImage.png; sourceTree = "<group>"; };
+		8C41735F1EA12C60004ECBF4 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		8C68761C1EA1145E009FB547 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8CA9DCC7566290565952F0FB /* Pods-GoChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoChat/Pods-GoChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +49,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5BC3B0DEEBA3B5EF947FB98 /* Pods_GoChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E06FA6453032073A03F97D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				746F1F5E1CAEC6F697CDAA8B /* Pods_GoChat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2E6A9B28274E1D5AC3CDC481 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8CA9DCC7566290565952F0FB /* Pods-GoChat.debug.xcconfig */,
+				66797A163279C1652251BF6F /* Pods-GoChat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8C2F5B9A1EA0DDCE00A68820 = {
 			isa = PBXGroup;
 			children = (
 				8C2F5BA51EA0DDCE00A68820 /* GoChat */,
 				8C2F5BA41EA0DDCE00A68820 /* Products */,
+				2E6A9B28274E1D5AC3CDC481 /* Pods */,
+				2E06FA6453032073A03F97D3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +95,30 @@
 			isa = PBXGroup;
 			children = (
 				8C2F5BA61EA0DDCE00A68820 /* AppDelegate.swift */,
-				8C2F5BA81EA0DDCE00A68820 /* ViewController.swift */,
 				8C2F5BAA1EA0DDCE00A68820 /* Main.storyboard */,
+				8C2F5BB81EA0DDFA00A68820 /* LoginViewController.swift */,
+				8C41735F1EA12C60004ECBF4 /* Helper.swift */,
+				8C2F5BBA1EA0DE3700A68820 /* ChatViewController.swift */,
+				8C2F5BE31EA0F4B700A68820 /* Resources */,
 				8C2F5BAD1EA0DDCE00A68820 /* Assets.xcassets */,
+				8C68761C1EA1145E009FB547 /* GoogleService-Info.plist */,
 				8C2F5BAF1EA0DDCE00A68820 /* LaunchScreen.storyboard */,
 				8C2F5BB21EA0DDCE00A68820 /* Info.plist */,
 			);
 			path = GoChat;
+			sourceTree = "<group>";
+		};
+		8C2F5BE31EA0F4B700A68820 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8C2F5BE41EA0F4B700A68820 /* backgroundPhoto.png */,
+				8C2F5BE51EA0F4B700A68820 /* dummyUser.png */,
+				8C2F5BE61EA0F4B700A68820 /* googleButton.png */,
+				8C2F5BE71EA0F4B700A68820 /* OrLine.png */,
+				8C2F5BE81EA0F4B700A68820 /* profileImage.png */,
+			);
+			name = Resources;
+			path = "Resources-GoChat";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +128,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C2F5BB51EA0DDCE00A68820 /* Build configuration list for PBXNativeTarget "GoChat" */;
 			buildPhases = (
+				E6D2BB6D48BC3E582C78A1B3 /* [CP] Check Pods Manifest.lock */,
 				8C2F5B9F1EA0DDCE00A68820 /* Sources */,
 				8C2F5BA01EA0DDCE00A68820 /* Frameworks */,
 				8C2F5BA11EA0DDCE00A68820 /* Resources */,
+				FC333FDA66F0848BA39A4254 /* [CP] Embed Pods Frameworks */,
+				1225330D16A36F1CD161C77E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -123,21 +183,77 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C2F5BE91EA0F4B700A68820 /* backgroundPhoto.png in Resources */,
 				8C2F5BB11EA0DDCE00A68820 /* LaunchScreen.storyboard in Resources */,
+				8C68761D1EA1145E009FB547 /* GoogleService-Info.plist in Resources */,
+				8C2F5BEB1EA0F4B700A68820 /* googleButton.png in Resources */,
 				8C2F5BAE1EA0DDCE00A68820 /* Assets.xcassets in Resources */,
 				8C2F5BAC1EA0DDCE00A68820 /* Main.storyboard in Resources */,
+				8C2F5BEA1EA0F4B700A68820 /* dummyUser.png in Resources */,
+				8C2F5BEC1EA0F4B700A68820 /* OrLine.png in Resources */,
+				8C2F5BED1EA0F4B700A68820 /* profileImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1225330D16A36F1CD161C77E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GoChat/Pods-GoChat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6D2BB6D48BC3E582C78A1B3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FC333FDA66F0848BA39A4254 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GoChat/Pods-GoChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8C2F5B9F1EA0DDCE00A68820 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C2F5BA91EA0DDCE00A68820 /* ViewController.swift in Sources */,
+				8C2F5BB91EA0DDFA00A68820 /* LoginViewController.swift in Sources */,
+				8C2F5BBB1EA0DE3700A68820 /* ChatViewController.swift in Sources */,
 				8C2F5BA71EA0DDCE00A68820 /* AppDelegate.swift in Sources */,
+				8C4173601EA12C60004ECBF4 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +374,7 @@
 		};
 		8C2F5BB61EA0DDCE00A68820 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CA9DCC7566290565952F0FB /* Pods-GoChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GoChat/Info.plist;
@@ -270,6 +387,7 @@
 		};
 		8C2F5BB71EA0DDCE00A68820 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66797A163279C1652251BF6F /* Pods-GoChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GoChat/Info.plist;
@@ -299,6 +417,7 @@
 				8C2F5BB71EA0DDCE00A68820 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
