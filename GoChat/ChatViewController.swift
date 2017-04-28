@@ -31,6 +31,9 @@ class ChatViewController: JSQMessagesViewController {
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
         print("didPressAccessoryButton")
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        self.present(imagePicker, animated: true, completion: nil)
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
@@ -86,4 +89,17 @@ class ChatViewController: JSQMessagesViewController {
     }
     */
 
+}
+
+extension ChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        print("did finish picking")
+        //get the image
+        print(info)
+        let picture = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let photo = JSQPhotoMediaItem(image: picture)
+        messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: photo))
+        self.dismiss(animated: true, completion: nil)
+        collectionView.reloadData()
+    }
 }
