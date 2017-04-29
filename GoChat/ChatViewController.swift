@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 import JSQMessagesViewController
 class ChatViewController: JSQMessagesViewController {
     var messages = [JSQMessage]()
@@ -31,9 +32,34 @@ class ChatViewController: JSQMessagesViewController {
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
         print("didPressAccessoryButton")
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        self.present(imagePicker, animated: true, completion: nil)
+        
+        let sheet = UIAlertController(title: "Media Messages", message: "Please select a media", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) in
+            
+        }
+        let photoLibrary = UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.default) { (alert:UIAlertAction) in
+            self.getMediaFrom(type: kUTTypeImage)
+        }
+        let videoLibrary = UIAlertAction(title: "Video Library", style: UIAlertActionStyle.default) { (alert:UIAlertAction) in
+            self.getMediaFrom(type: kUTTypeMovie)
+        }
+        
+        sheet.addAction(cancel)
+        sheet.addAction(photoLibrary)
+        sheet.addAction(videoLibrary)
+        self.present(sheet, animated: true, completion: nil)
+        
+//        let imagePicker = UIImagePickerController()
+//        imagePicker.delegate = self
+//        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func getMediaFrom(type: CFString) {
+        let mediaPicker = UIImagePickerController()
+        mediaPicker.delegate = self
+        mediaPicker.mediaTypes = [type as String]
+        self.present(mediaPicker, animated: true, completion: nil)
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
@@ -96,9 +122,14 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
         print("did finish picking")
         //get the image
         print(info)
-        let picture = info[UIImagePickerControllerOriginalImage] as! UIImage
-        let photo = JSQPhotoMediaItem(image: picture)
-        messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: photo))
+        if let picture = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            let photo = JSQPhotoMediaItem(image: picture)
+            messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: photo))
+        }
+        else if let video = info[UIImagePickerControllerMediaURL] as? NSURL{
+            let videoItem = JSQVideoMediaItem(fileURL: video as URL!, isReadyToPlay: true)
+            messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: videoItem))
+        }
         self.dismiss(animated: true, completion: nil)
         collectionView.reloadData()
     }
