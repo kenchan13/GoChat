@@ -17,23 +17,23 @@ class ChatViewController: JSQMessagesViewController {
     var messageRef = FIRDatabase.database().reference().child("messages")
     override func viewDidLoad() {
         super.viewDidLoad()
-          
+        
         self.senderId = "123"
         self.senderDisplayName = "Ken"
         // Do any additional setup after loading the view.
         
-//        messageRef.childByAutoId().setValue("first message")
-//        messageRef.childByAutoId().setValue("second message")
-//        messageRef.observe(FIRDataEventType.childAdded) {(snapshot: FIRDataSnapshot) in
-//            print(snapshot.value)
-//            if let dict = snapshot.value as? String {
-//                print("dict: \(dict)")
-//            }
-//        }
-        observeMessage()
+        //        messageRef.childByAutoId().setValue("first message")
+        //        messageRef.childByAutoId().setValue("second message")
+        //        messageRef.observe(FIRDataEventType.childAdded) {(snapshot: FIRDataSnapshot) in
+        //            print(snapshot.value)
+        //            if let dict = snapshot.value as? String {
+        //                print("dict: \(dict)")
+        //            }
+        //        }
+        observeMessages()
     }
     
-    func observeMessage() { //It used to pulling data
+    func observeMessages() { //pulling data
         messageRef.observe(.childAdded, with: { snapshot in
             //print(snapshot.value)
             if let dict = snapshot.value as? [String: AnyObject] {
@@ -43,18 +43,16 @@ class ChatViewController: JSQMessagesViewController {
                 let text = dict["text"] as! String
                 self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
                 self.collectionView.reloadData()
-
             }
         })
     }
-
+    
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-//        messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text))
-//        collectionView.reloadData()
-//        print(messages)
+        //        messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text))
+        //        collectionView.reloadData()
+        //        print(messages)
         let newMessage = messageRef.childByAutoId()
         let messageData = ["text": text, "senderId": senderId, "senderName": senderDisplayName, "MediaType": "TEXT"]
-        //The data contains the message information sent by users(text, senderId)
         newMessage.setValue(messageData)
     }
     
@@ -78,9 +76,9 @@ class ChatViewController: JSQMessagesViewController {
         sheet.addAction(videoLibrary)
         self.present(sheet, animated: true, completion: nil)
         
-//        let imagePicker = UIImagePickerController()
-//        imagePicker.delegate = self
-//        self.present(imagePicker, animated: true, completion: nil)
+        //        let imagePicker = UIImagePickerController()
+        //        imagePicker.delegate = self
+        //        self.present(imagePicker, animated: true, completion: nil)
     }
     
     func getMediaFrom(type: CFString) {
@@ -147,17 +145,17 @@ class ChatViewController: JSQMessagesViewController {
         appDelegate.window?.rootViewController = LogInVC
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension ChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
