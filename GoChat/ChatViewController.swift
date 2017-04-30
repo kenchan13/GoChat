@@ -157,6 +157,13 @@ override func didReceiveMemoryWarning() {
 }
 
 @IBAction func logoutDidTapped(_ sender: Any) {
+    
+    do {
+        try FIRAuth.auth()?.signOut()
+    } catch let error {
+        print(error)
+    }
+    
     // Create  main storyboard instance
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     
