@@ -40,8 +40,17 @@ class ChatViewController: JSQMessagesViewController {
                 let MediaType = dict["MediaType"] as! String
                 let senderId = dict["senderId"] as! String
                 let senderName = dict["senderName"] as! String
-                let text = dict["text"] as! String
-                self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
+                
+                if let text = dict["text"] as? String {
+                    self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
+                } else {
+                    let fileUrl = dict["fileUrl"] as! String
+                    let data = try? Data(contentsOf: URL(string: fileUrl)!)
+                    let picture = UIImage(data: data!)
+                    let photo = JSQPhotoMediaItem(image: picture)
+                    self.messages.append(JSQMessage(senderId: self.senderId, displayName: self.senderDisplayName, media: photo))
+                }
+                
                 self.collectionView.reloadData()
             }
         })
