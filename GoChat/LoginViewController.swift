@@ -32,7 +32,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         
         FIRAuth.auth()?.addStateDidChangeListener({ (auth: FIRAuth, user: FIRUser?) in
             if user != nil {
-                print(user)
+                print(user as Any)
                 Helper.helper.switchToNavigationViewController()
             } else {
                 print("Unauthorized")
