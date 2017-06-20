@@ -18,6 +18,8 @@ class ChatViewController: JSQMessagesViewController {
     var messages = [JSQMessage]()
     var avatarDict = [String: JSQMessagesAvatarImage]()
     var messageRef = FIRDatabase.database().reference().child("messages")
+    let photoCache = NSCache<AnyObject, AnyObject>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,7 +60,7 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     func observeMessages() { //pulling data
-        messageRef.observe(.childAdded, with: { snapshot in
+        messageRef.observe(.childAdded, with: { snapshot in //each snapshot is message data
             //print(snapshot.value)
             if let dict = snapshot.value as? [String: AnyObject] {
                 let mediaType = dict["MediaType"] as! String
@@ -66,22 +68,44 @@ class ChatViewController: JSQMessagesViewController {
                 let senderName = dict["senderName"] as! String
                 
                 self.observeUser(id: senderId)
+                let startTime = CFAbsoluteTimeGetCurrent()
                 
                 switch mediaType {
                 case "TEXT":
                     let text = dict["text"] as? String
                     self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
+                    print("Text message: \(CFAbsoluteTimeGetCurrent() - startTime)")
                     break
+                    
                 case "PHOTO":
+                    var photo = JSQPhotoMediaItem(image: nil)
                     let fileUrl = dict["fileUrl"] as! String
                     let url = URL(string: fileUrl)
-                    let data = try? Data(contentsOf: url!)
-                    let picture = UIImage(data: data!)
-                    let photo = JSQPhotoMediaItem(image: picture)
+                    
+                    if let cachedPhoto = self.photoCache.object(forKey: fileUrl as AnyObject) as? JSQPhotoMediaItem {
+                        photo = cachedPhoto
+                        self.collectionView.reloadData()
+                    } else {
+                        DispatchQueue.global(qos: .userInteractive).async {
+                            DispatchQueue.main.async {
+                                let data = try? Data(contentsOf: url!)
+                                let image = UIImage(data: data!)
+                                photo?.image = image
+                                self.collectionView.reloadData()
+                                self.photoCache.setObject(photo!, forKey: fileUrl as AnyObject)
+                            }
+                        }
+                    }
+                    
+                    
+                    
+                    
+                    
                     self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
                     
                     print("Photo: senderId = \(senderId)")
                     print("Photo self.senderId = \(self.senderId)")
+                    print("Photo message: \(CFAbsoluteTimeGetCurrent() - startTime)")
                     
                     if self.senderId == senderId {
                         photo?.appliesMediaViewMaskAsOutgoing = true
@@ -96,8 +120,7 @@ class ChatViewController: JSQMessagesViewController {
                     let videoItem = JSQVideoMediaItem(fileURL: video, isReadyToPlay: true)
                     self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: videoItem))
                     
-//                    print("senderId = \(senderId)")
-//                    print("self.senderId = \(self.senderId)")
+                    print("Video message: \(CFAbsoluteTimeGetCurrent() - startTime)")
                     
                     if self.senderId == senderId {
                         videoItem?.appliesMediaViewMaskAsOutgoing = true
