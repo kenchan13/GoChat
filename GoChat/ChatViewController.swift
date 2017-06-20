@@ -13,12 +13,13 @@ import AVKit
 import FirebaseDatabase
 import FirebaseStorage
 import FirebaseAuth
+import SDWebImage
 
 class ChatViewController: JSQMessagesViewController {
     var messages = [JSQMessage]()
     var avatarDict = [String: JSQMessagesAvatarImage]()
     var messageRef = FIRDatabase.database().reference().child("messages")
-    let photoCache = NSCache<AnyObject, AnyObject>()
+//    let photoCache = NSCache<AnyObject, AnyObject>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,29 +79,37 @@ class ChatViewController: JSQMessagesViewController {
                     break
                     
                 case "PHOTO":
-                    var photo = JSQPhotoMediaItem(image: nil)
+//                    var photo = JSQPhotoMediaItem(image: nil)
+//                    let fileUrl = dict["fileUrl"] as! String
+//                    let url = URL(string: fileUrl)
+//                    
+//                    if let cachedPhoto = self.photoCache.object(forKey: fileUrl as AnyObject) as? JSQPhotoMediaItem {
+//                        photo = cachedPhoto
+//                        self.collectionView.reloadData()
+//                    } else {
+//                        DispatchQueue.global(qos: .userInteractive).async {
+//                            DispatchQueue.main.async {
+//                                let data = try? Data(contentsOf: url!)
+//                                let image = UIImage(data: data!)
+//                                photo?.image = image
+//                                self.collectionView.reloadData()
+//                                self.photoCache.setObject(photo!, forKey: fileUrl as AnyObject)
+//                            }
+//                        }
+//                    }
+                    
+                    let photo = JSQPhotoMediaItem(image: nil)
                     let fileUrl = dict["fileUrl"] as! String
-                    let url = URL(string: fileUrl)
+                    let downloader = SDWebImageDownloader.shared()
+                    downloader.downloadImage(with: URL(string: fileUrl), options: [], progress: nil, completed: {
+                        (image, data, error, finished) in
+                        DispatchQueue.main.async(execute: {
+                            photo?.image = image
+                            self.collectionView.reloadData()
+                        })
+                    })
                     
-                    if let cachedPhoto = self.photoCache.object(forKey: fileUrl as AnyObject) as? JSQPhotoMediaItem {
-                        photo = cachedPhoto
-                        self.collectionView.reloadData()
-                    } else {
-                        DispatchQueue.global(qos: .userInteractive).async {
-                            DispatchQueue.main.async {
-                                let data = try? Data(contentsOf: url!)
-                                let image = UIImage(data: data!)
-                                photo?.image = image
-                                self.collectionView.reloadData()
-                                self.photoCache.setObject(photo!, forKey: fileUrl as AnyObject)
-                            }
-                        }
-                    }
-                    
-                    
-                    
-                    
-                    
+
                     self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
                     
                     print("Photo: senderId = \(senderId)")
